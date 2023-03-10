@@ -15,3 +15,7 @@ test_add.o: test_add.c add.h
 clean:
 	rm -f test_add *.o
 
+.PHONY: test_add
+test_add: test_add.o add.o
+	$(CC) $(CFLAGS) -o test_add test_add.o add.o
+	./test_add
