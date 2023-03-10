@@ -1,21 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -Werror -g
 
-all: test_add
+all: test_is_prime
 
-test_add: add.o test_add.o
-	$(CC) $(CFLAGS) -o test_add add.o test_add.o
+test_is_prime: is_prime.o test_is_prime.o
+	$(CC) $(CFLAGS) -o test_is_prime is_prime.o test_is_prime.o
 
-add.o: add.c add.h
-	$(CC) $(CFLAGS) -c add.c
+is_prime.o: is_prime.c
+	$(CC) $(CFLAGS) -c is_prime.c
 
-test_add.o: test_add.c add.h
-	$(CC) $(CFLAGS) -c test_add.c
+test_is_prime.o: test_is_prime.c
+	$(CC) $(CFLAGS) -c test_is_prime.c
 
 clean:
-	rm -f test_add *.o
+	rm -f test_is_prime *.o
 
-.PHONY: test_add
-test_add: test_add.o add.o
-	$(CC) $(CFLAGS) -o test_add test_add.o add.o
-	./test_add
